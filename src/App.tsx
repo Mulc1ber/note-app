@@ -1,5 +1,10 @@
 import "./App.css";
+import { MainPage } from "./components";
 
 export const App = () => {
-  return <></>;
+  return (
+    <div className="app-container">
+      <MainPage />
+    </div>
+  );
 };
