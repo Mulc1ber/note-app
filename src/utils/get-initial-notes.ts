@@ -1,5 +1,5 @@
 import { generateId } from "./generate-id";
-import type { Note } from "../types";
+import type { Note } from "@/types";
 
 export const getInitialNotes = (): Note[] => {
   const savedNotes = localStorage.getItem("notes");

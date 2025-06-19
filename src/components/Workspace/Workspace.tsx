@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { MarkdownRenderer } from "../MarkdownRenderer/MarkdownRenderer";
 import { Button } from "@mantine/core";
-import type { Note } from "../../types";
+import type { Note } from "@/types";
 
 interface WorkspaceProps {
   note: Note | null;

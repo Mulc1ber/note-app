@@ -1,7 +1,7 @@
+import type { Note } from "@/types";
 import { ListItem } from "../ListItem/ListItem";
 import { SearchBox } from "../SearchBox/SearchBox";
 import { Button } from "@mantine/core";
-import type { Note } from "../../types";
 
 interface SidebarProps {
   notes: Note[];
