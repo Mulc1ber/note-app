@@ -1,5 +1,6 @@
 import type { Note } from "@/types";
 import { NoteItem } from "../NoteItem/NoteItem";
+import styles from "./ListItem.module.css";
 
 interface ListItemProps {
   notes: Note[];
@@ -9,7 +10,7 @@ interface ListItemProps {
 
 export const ListItem = ({ notes, ...rest }: ListItemProps) => {
   return (
-    <div className="note-list">
+    <div className={styles["note-list"]}>
       {notes.map((note) => (
         <NoteItem key={note.id} note={note} {...rest} />
       ))}

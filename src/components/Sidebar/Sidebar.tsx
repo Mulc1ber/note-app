@@ -2,6 +2,7 @@ import type { Note } from "@/types";
 import { ListItem } from "../ListItem/ListItem";
 import { SearchBox } from "../SearchBox/SearchBox";
 import { Button } from "@mantine/core";
+import styles from "./Sidebar.module.css";
 
 interface SidebarProps {
   notes: Note[];
@@ -20,16 +21,16 @@ export const Sidebar = ({
   ...rest
 }: SidebarProps) => {
   return (
-    <div className="sidebar">
+    <div className={styles["sidebar"]}>
       <SearchBox {...rest} />
       <ListItem
         notes={notes}
         selectedNoteId={selectedNoteId}
         onSelectNote={onSelectNote}
       />
-      <div className="add-note-button-container">
+      <div className={styles["add-note-button-container"]}>
         <Button
-          className="add-note-button"
+          className={styles["add-note-button"]}
           variant="filled"
           size="md"
           radius="sm"

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { MarkdownRenderer } from "../MarkdownRenderer/MarkdownRenderer";
 import { Button } from "@mantine/core";
 import type { Note } from "@/types";
+import styles from "./Workspace.module.css";
 
 interface WorkspaceProps {
   note: Note | null;
@@ -47,15 +48,17 @@ export const Workspace = ({
 
   if (!note) {
     return (
-      <div className="main-content no-note-selected">
+      <div
+        className={`${styles["main-content"]} ${styles["no-note-selected"]}`}
+      >
         Выберите заметку слева или создайте новую.
       </div>
     );
   }
 
   return (
-    <div className="main-content note-view">
-      <div className="note-header">
+    <div className={`${styles["main-content"]} ${styles["note-view"]}`}>
+      <div className={styles["note-header"]}>
         {isEditing ? (
           <>
             <Button variant="light" color="teal" onClick={handleSaveClick}>
@@ -76,8 +79,12 @@ export const Workspace = ({
           </>
         )}
       </div>
-      <div className={`note-content ${isEditing ? "editing" : ""}`}>
-        <div className="note-date">{note.date}</div>
+      <div
+        className={`${styles["note-content"]} ${
+          isEditing ? styles.editing : ""
+        }`}
+      >
+        <div className={styles["note-date"]}>{note.date}</div>
         {isEditing ? (
           <textarea
             value={editedContent}

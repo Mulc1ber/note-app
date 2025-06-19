@@ -1,0 +1,61 @@
+.main-content {
+  flex-grow: 1;
+  padding: 15px;
+  background-color: var(--bg-color-light);
+}
+
+.no-note-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color-light);
+}
+
+.note-view {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.note-header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.note-content {
+  overflow: auto;
+  flex-grow: 1;
+}
+.editing {
+  overflow: hidden;
+  border: none;
+}
+
+.note-date {
+  position: sticky;
+  top: 0;
+  height: 20px;
+  font-size: 0.8em;
+  color: var(--text-color-light);
+  text-align: center;
+  background-color: var(--bg-color-light);
+}
+
+.note-content textarea {
+  width: 100%;
+  height: calc(100% - 20px);
+  padding: 10px 1rem;
+  border: 1px solid var(--border-color-textarea);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 1em;
+  resize: none;
+}
+.note-content textarea:focus {
+  outline: none;
+  border: 1px solid var(--border-color-focus);
+  border-radius: 4px;
+}

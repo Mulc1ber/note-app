@@ -30,6 +30,11 @@
   box-sizing: border-box;
 }
 
+#root {
+  display: flex;
+  width: 100%;
+}
+
 body {
   overflow: hidden;
   display: flex;

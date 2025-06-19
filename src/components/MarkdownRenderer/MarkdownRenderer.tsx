@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { marked } from "marked";
+import styles from "./MarkdownRenderer.module.css";
 
 interface MarkdownRendererProps {
   content: string;
@@ -12,7 +13,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
 
   return (
     <div
-      className="note-content-rendered"
+      className={styles["note-content-rendered"]}
       dangerouslySetInnerHTML={{ __html: htmlContent }}
     />
   );

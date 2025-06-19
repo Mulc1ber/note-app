@@ -1,4 +1,5 @@
 import type { Note } from "@/types";
+import styles from "./NoteItem.module.css";
 
 interface NoteItemProps {
   note: Note;
@@ -13,13 +14,13 @@ export const NoteItem = ({
 }: NoteItemProps) => {
   return (
     <div
-      className={`note-list-item ${
-        note.id === selectedNoteId ? "selected" : ""
+      className={`${styles["note-list-item"]} ${
+        note.id === selectedNoteId ? styles.selected : ""
       }`}
       onClick={() => onSelectNote(note.id)}
     >
       <h4>{note.title || "Без названия"}</h4>
-      <div className="note-preview-container">
+      <div className={styles["note-preview-container"]}>
         <span>{note.date}</span>
         <p>{note.content.split("\n")[0] || "Нет содержимого"}</p>
       </div>
