@@ -1,16 +1,14 @@
 import { CloseButton, Input } from "@mantine/core";
 import styles from "./SearchBox.module.css";
+import { useNotes } from "@/context";
 
-interface SearchBoxProps {
-  searchQuery: string;
-  onSearchChange: (value: string) => void;
-}
+export const SearchBox = () => {
+  const { searchQuery, handleSearchChange } = useNotes();
 
-export const SearchBox = ({ searchQuery, onSearchChange }: SearchBoxProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    onSearchChange(event.target.value);
+    handleSearchChange(event.target.value);
 
-  const handleClear = () => onSearchChange("");
+  const handleClear = () => handleSearchChange("");
 
   return (
     <div className={styles["search-bar"]}>

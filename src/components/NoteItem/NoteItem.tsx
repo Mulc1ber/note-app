@@ -1,23 +1,20 @@
 import type { Note } from "@/types";
+import { useNotes } from "@/context";
 import styles from "./NoteItem.module.css";
 
 interface NoteItemProps {
   note: Note;
-  selectedNoteId: string | null;
-  onSelectNote: (id: string) => void;
 }
 
-export const NoteItem = ({
-  note,
-  selectedNoteId,
-  onSelectNote,
-}: NoteItemProps) => {
+export const NoteItem = ({ note }: NoteItemProps) => {
+  const { selectedNoteId, setSelectedNoteId } = useNotes();
+
   return (
     <div
       className={`${styles["note-list-item"]} ${
         note.id === selectedNoteId ? styles.selected : ""
       }`}
-      onClick={() => onSelectNote(note.id)}
+      onClick={() => setSelectedNoteId(note.id)}
     >
       <h4>{note.title || "Без названия"}</h4>
       <div className={styles["note-preview-container"]}>

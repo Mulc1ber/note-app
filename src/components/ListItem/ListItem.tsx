@@ -1,18 +1,14 @@
-import type { Note } from "@/types";
 import { NoteItem } from "../NoteItem/NoteItem";
+import { useNotes } from "@/context";
 import styles from "./ListItem.module.css";
 
-interface ListItemProps {
-  notes: Note[];
-  selectedNoteId: string | null;
-  onSelectNote: (id: string) => void;
-}
+export const ListItem = () => {
+  const { filteredNotes } = useNotes();
 
-export const ListItem = ({ notes, ...rest }: ListItemProps) => {
   return (
     <div className={styles["note-list"]}>
-      {notes.map((note) => (
-        <NoteItem key={note.id} note={note} {...rest} />
+      {filteredNotes.map((note) => (
+        <NoteItem key={note.id} note={note} />
       ))}
     </div>
   );
