@@ -1,5 +1,7 @@
 export * from "./AuthStatus/AuthStatus";
+export * from "./ErrorBoundary/ErrorBoundary";
 export * from "./ListItem/ListItem";
+export * from "./Loading/Loading";
 export * from "./MarkdownRenderer/MarkdownRenderer";
 export * from "./NoteItem/NoteItem";
 export * from "./SearchBox/SearchBox";
