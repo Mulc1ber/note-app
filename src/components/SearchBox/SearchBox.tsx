@@ -1,5 +1,4 @@
 import { CloseButton, Input } from "@mantine/core";
-import styles from "./SearchBox.module.css";
 import { useNotes } from "@/context";
 
 export const SearchBox = () => {
@@ -11,7 +10,7 @@ export const SearchBox = () => {
   const handleClear = () => handleSearchChange("");
 
   return (
-    <div className={styles["search-bar"]}>
+    <div>
       <Input
         type="text"
         placeholder="Поиск..."

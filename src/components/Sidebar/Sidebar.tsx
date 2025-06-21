@@ -1,3 +1,4 @@
+import { AuthStatus } from "../AuthStatus/AuthStatus";
 import { ListItem } from "../ListItem/ListItem";
 import { SearchBox } from "../SearchBox/SearchBox";
 import { Button } from "@mantine/core";
@@ -9,7 +10,10 @@ export const Sidebar = () => {
 
   return (
     <div className={styles["sidebar"]}>
-      <SearchBox />
+      <div className={styles["sidebar-header"]}>
+        <AuthStatus />
+        <SearchBox />
+      </div>
       <ListItem />
       <div className={styles["add-note-button-container"]}>
         <Button

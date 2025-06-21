@@ -1,8 +1,0 @@
-.search-bar {
-  position: sticky;
-  top: 0;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid var(--border-color-separator);
-  background-color: var(--bg-color-alt);
-}
