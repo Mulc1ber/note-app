@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { MarkdownRenderer } from "../MarkdownRenderer/MarkdownRenderer";
-import { Button } from "@mantine/core";
+import { Button, Text } from "@mantine/core";
+import { modals } from "@mantine/modals";
 import { useNotes } from "@/context";
+import type { Note } from "@/types";
 import styles from "./Workspace.module.css";
 
 export const Workspace = () => {
@@ -9,13 +11,6 @@ export const Workspace = () => {
   const [editedContent, setEditedContent] = useState("");
 
   const { selectedNote, deleteNote, updateNote } = useNotes();
-
-  useEffect(() => {
-    if (selectedNote) {
-      setEditedContent(selectedNote.content);
-      setIsEditing(false);
-    }
-  }, [selectedNote]);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -28,18 +23,31 @@ export const Workspace = () => {
     setIsEditing(false);
   };
 
-  const handleDeleteClick = () => {
-    if (
-      selectedNote &&
-      confirm("Вы уверены, что хотите удалить эту заметку?")
-    ) {
-      deleteNote(selectedNote.id);
-    }
-  };
   const handleCancelClick = () => {
     if (selectedNote) setEditedContent(selectedNote.content);
     setIsEditing(false);
   };
+
+  const openModal = (selectedNote: Note) =>
+    modals.openConfirmModal({
+      title: "Подтвердите удаление заметки",
+      children: (
+        <Text size="sm">Вы уверены, что хотите удалить эту заметку?</Text>
+      ),
+      labels: { confirm: "Подтвердить", cancel: "Отмена" },
+      onCancel: () => console.log("Cancel"),
+      onConfirm: () => {
+        console.log("Confirmed");
+        deleteNote(selectedNote.id);
+      },
+    });
+
+  useEffect(() => {
+    if (selectedNote) {
+      setEditedContent(selectedNote.content);
+      setIsEditing(false);
+    }
+  }, [selectedNote]);
 
   if (!selectedNote) {
     return (
@@ -68,7 +76,11 @@ export const Workspace = () => {
             <Button variant="light" onClick={handleEditClick}>
               Редактировать
             </Button>
-            <Button variant="light" color="red" onClick={handleDeleteClick}>
+            <Button
+              variant="light"
+              color="red"
+              onClick={() => openModal(selectedNote)}
+            >
               Удалить
             </Button>
           </>
