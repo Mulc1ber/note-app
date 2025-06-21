@@ -7,9 +7,11 @@ export const ListItem = () => {
 
   return (
     <div className={styles["note-list"]}>
-      {filteredNotes.map((note) => (
-        <NoteItem key={note.id} note={note} />
-      ))}
+      {filteredNotes.length ? (
+        filteredNotes.map((note) => <NoteItem key={note.id} note={note} />)
+      ) : (
+        <small className={styles["empty-list"]}>Список пуст.</small>
+      )}
     </div>
   );
 };
