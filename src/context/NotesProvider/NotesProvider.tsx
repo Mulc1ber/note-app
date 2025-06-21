@@ -1,12 +1,8 @@
-import {
-  createContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
-import { generateId, getInitialNotes } from "@/utils";
+import { createContext, useMemo, useState, type ReactNode } from "react";
+import { generateId } from "@/utils";
 import type { Note } from "@/types";
+import { db } from "@/services";
+import { useLiveQuery } from "dexie-react-hooks";
 
 interface NotesContextType {
   selectedNoteId: string | null;
@@ -27,18 +23,16 @@ interface NotesProviderProps {
 export const NotesContext = createContext<NotesContextType | null>(null);
 
 export const NotesProvider = ({ children }: NotesProviderProps) => {
-  const [notes, setNotes] = useState<Note[]>(getInitialNotes());
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
+  const rawNotes = useLiveQuery(() =>
+    db.notes.orderBy("date").reverse().toArray()
+  );
+  const notes = useMemo(() => rawNotes || [], [rawNotes]);
 
   const filteredNotes = useMemo(() => {
-    if (!searchQuery) {
-      return notes;
-    }
+    if (!searchQuery) return notes;
     const lowerQuery = searchQuery.toLowerCase();
     return notes.filter(
       (note) =>
@@ -51,39 +45,30 @@ export const NotesProvider = ({ children }: NotesProviderProps) => {
     return notes.find((note) => note.id === selectedNoteId) || null;
   }, [notes, selectedNoteId]);
 
-  const addNote = () => {
+  const addNote = async () => {
     const newNote: Note = {
       id: generateId(),
       title: "Новая заметка",
       content: "",
       date: new Date().toLocaleString("ru-RU"),
     };
-    setNotes([newNote, ...notes]);
+    await db.notes.add(newNote); // Сохраняем в IndexedDB
     setSelectedNoteId(newNote.id);
   };
 
-  const deleteNote = (id: string) => {
-    setNotes(notes.filter((note) => note.id !== id));
+  const deleteNote = async (id: string) => {
+    await db.notes.delete(id); // Удаляем из IndexedDB
     if (selectedNoteId === id) {
-      setSelectedNoteId(null); // Deselect if the deleted note was selected
+      setSelectedNoteId(null);
     }
   };
 
-  const updateNote = (id: string, updatedContent: string) => {
-    setNotes(
-      notes.map((note) =>
-        note.id === id
-          ? {
-              ...note,
-              content: updatedContent,
-              title: updatedContent.split("\n")[0] || "Новая заметка",
-              date: updatedContent
-                ? new Date().toLocaleString("ru-RU")
-                : note.date,
-            }
-          : note
-      )
-    );
+  const updateNote = async (id: string, updatedContent: string) => {
+    await db.notes.update(id, {
+      content: updatedContent,
+      title: updatedContent.split("\n")[0] || "Новая заметка",
+      date: updatedContent ? new Date().toLocaleString("ru-RU") : undefined,
+    });
   };
 
   const handleSearchChange = (query: string) => {
