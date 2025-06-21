@@ -1,5 +1,4 @@
 export * from "./ListItem/ListItem";
-export * from "./MainPage/MainPage";
 export * from "./MarkdownRenderer/MarkdownRenderer";
 export * from "./NoteItem/NoteItem";
 export * from "./SearchBox/SearchBox";

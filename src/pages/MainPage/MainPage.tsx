@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
-import { generateId, getInitialNotes } from "../../utils";
-import { Sidebar } from "../Sidebar/Sidebar";
-import { Workspace } from "../Workspace/Workspace";
-import type { Note } from "../../types";
+import { generateId, getInitialNotes } from "@/utils";
+import { Sidebar, Workspace } from "@/components";
+import type { Note } from "@/types";
+import styles from "./MainPage.module.css";
 
 export const MainPage = () => {
   const [notes, setNotes] = useState<Note[]>(getInitialNotes());
@@ -69,7 +69,7 @@ export const MainPage = () => {
   };
 
   return (
-    <div className="main-container">
+    <div className={styles["main-container"]}>
       <Sidebar
         notes={filteredNotes}
         selectedNoteId={selectedNoteId}

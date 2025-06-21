@@ -1,10 +1,5 @@
-import "./App.css";
-import { MainPage } from "./components";
+import { AppRouter } from "./routers";
 
 export const App = () => {
-  return (
-    <div className="app-container">
-      <MainPage />
-    </div>
-  );
+  return <AppRouter />;
 };
