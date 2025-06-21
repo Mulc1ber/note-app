@@ -3,6 +3,7 @@ import { generateId } from "@/utils";
 import type { Note } from "@/types";
 import { db } from "@/services";
 import { useLiveQuery } from "dexie-react-hooks";
+import { useDebouncedValue } from "@mantine/hooks";
 
 interface NotesContextType {
   selectedNoteId: string | null;
@@ -25,6 +26,7 @@ export const NotesContext = createContext<NotesContextType | null>(null);
 export const NotesProvider = ({ children }: NotesProviderProps) => {
   const [selectedNoteId, setSelectedNoteId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedQuery] = useDebouncedValue(searchQuery, 300);
 
   const rawNotes = useLiveQuery(() =>
     db.notes.orderBy("date").reverse().toArray()
@@ -32,14 +34,14 @@ export const NotesProvider = ({ children }: NotesProviderProps) => {
   const notes = useMemo(() => rawNotes || [], [rawNotes]);
 
   const filteredNotes = useMemo(() => {
-    if (!searchQuery) return notes;
-    const lowerQuery = searchQuery.toLowerCase();
+    if (!debouncedQuery) return notes;
+    const lowerQuery = debouncedQuery.toLowerCase();
     return notes.filter(
       (note) =>
         note.title.toLowerCase().includes(lowerQuery) ||
         note.content.toLowerCase().includes(lowerQuery)
     );
-  }, [notes, searchQuery]);
+  }, [notes, debouncedQuery]);
 
   const selectedNote = useMemo(() => {
     return notes.find((note) => note.id === selectedNoteId) || null;
