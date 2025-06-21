@@ -2,7 +2,7 @@ import { AuthStatus } from "../AuthStatus/AuthStatus";
 import { ListItem } from "../ListItem/ListItem";
 import { SearchBox } from "../SearchBox/SearchBox";
 import { Button } from "@mantine/core";
-import { useNotes } from "@/context";
+import { useNotes } from "@/hooks";
 import styles from "./Sidebar.module.css";
 
 export const Sidebar = () => {

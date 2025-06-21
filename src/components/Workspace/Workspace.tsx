@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { MarkdownRenderer } from "../MarkdownRenderer/MarkdownRenderer";
 import { Button, Text } from "@mantine/core";
 import { modals } from "@mantine/modals";
-import { useNotes } from "@/context";
+import { useNotes } from "@/hooks";
 import type { Note } from "@/types";
 import styles from "./Workspace.module.css";
 

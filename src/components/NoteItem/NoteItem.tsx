@@ -1,5 +1,5 @@
 import type { Note } from "@/types";
-import { useNotes } from "@/context";
+import { useNotes } from "@/hooks";
 import styles from "./NoteItem.module.css";
 
 interface NoteItemProps {

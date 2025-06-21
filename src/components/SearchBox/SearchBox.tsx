@@ -1,5 +1,5 @@
 import { CloseButton, Input } from "@mantine/core";
-import { useNotes } from "@/context";
+import { useNotes } from "@/hooks";
 
 export const SearchBox = () => {
   const { searchQuery, handleSearchChange } = useNotes();

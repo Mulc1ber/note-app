@@ -1,7 +1,6 @@
 import React from "react";
-
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context";
+import { useAuth } from "@/hooks";
 import { UserProfile } from "../UserProfile/UserProfile";
 
 export const AuthStatus: React.FC = () => {

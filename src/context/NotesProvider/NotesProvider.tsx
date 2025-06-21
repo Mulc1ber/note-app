@@ -1,6 +1,5 @@
 import {
   createContext,
-  useContext,
   useEffect,
   useMemo,
   useState,
@@ -25,7 +24,7 @@ interface NotesProviderProps {
   children: ReactNode;
 }
 
-const NotesContext = createContext<NotesContextType | null>(null);
+export const NotesContext = createContext<NotesContextType | null>(null);
 
 export const NotesProvider = ({ children }: NotesProviderProps) => {
   const [notes, setNotes] = useState<Note[]>(getInitialNotes());
@@ -103,12 +102,4 @@ export const NotesProvider = ({ children }: NotesProviderProps) => {
     handleSearchChange,
   };
   return <NotesContext value={value}>{children}</NotesContext>;
-};
-
-export const useNotes = () => {
-  const context = useContext(NotesContext);
-  if (!context) {
-    throw new Error("useNotes must be used within a NotesProvider");
-  }
-  return context;
 };

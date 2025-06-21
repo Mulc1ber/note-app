@@ -1,5 +1,5 @@
+import { useNotes } from "@/hooks";
 import { NoteItem } from "../NoteItem/NoteItem";
-import { useNotes } from "@/context";
 import styles from "./ListItem.module.css";
 
 export const ListItem = () => {
