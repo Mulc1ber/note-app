@@ -1,4 +1,5 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, type ReactNode } from "react";
+import { useLocalStorage } from "@/hooks";
 
 interface User {
   email: string;
@@ -18,26 +19,23 @@ interface AuthProviderProps {
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<string | null>(
-    () => localStorage.getItem("user") || null
+  const [user, setUser, removeUser] = useLocalStorage<User | null>(
+    "user",
+    null
   );
 
   const signin = (newUser: User, callback: () => void) => {
-    const parsedUser = JSON.stringify(newUser);
-
-    setUser(parsedUser);
-    localStorage.setItem("user", parsedUser);
+    setUser(newUser);
     callback();
   };
 
   const signout = (callback: () => void) => {
-    setUser(null);
-    localStorage.removeItem("user");
+    removeUser();
     callback();
   };
 
   const value: AuthContextType = {
-    user,
+    user: user ? JSON.stringify(user) : null,
     signin,
     signout,
   };
