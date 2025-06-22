@@ -1,0 +1,1 @@
+import{j as n,a1 as o}from"./index-BgaURcRv.js";const s={"not-found":"_not-found_cbqiu_1"},e=()=>n.jsxs("div",{className:s["not-found"],children:[n.jsx("h1",{children:"Страница не найдена"}),n.jsx(o,{to:"/note-app",children:"Вернуться на главную страницу"})]});export{e as NotFound};
