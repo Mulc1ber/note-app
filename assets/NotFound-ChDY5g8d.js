@@ -1,1 +1,0 @@
-import{j as n,a1 as o}from"./index-CHYYUIFM.js";const s={"not-found":"_not-found_cbqiu_1"},r=()=>n.jsxs("div",{className:s["not-found"],children:[n.jsx("h1",{children:"Страница не найдена"}),n.jsx(o,{to:"/",children:"Вернуться на главную страницу"})]});export{r as NotFound};
