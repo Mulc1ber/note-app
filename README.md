@@ -1,54 +1,44 @@
-# React + TypeScript + Vite
+# Notes App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Задание
 
-Currently, two official plugins are available:
+Создать упрощеную копию приложения «Заметки» из операционной системы macOS с помощью Vite, React, TS и React Router v6.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Реализация
 
-## Expanding the ESLint configuration
+### 1. Инициализация проекта
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Создано приложение с помощью Vite + React + TypeScript.
+- Настроен React Router v6 для маршрутизации.
+- Подключена дизайн-система Mantine для UI-компонентов.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 2. Авторизация
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Реализована страница входа с валидацией.
+- После успешного входа пользователь перенаправляется в основное приложение.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 3. Основной интерфейс
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Боковая панель со списком заметок.
+- Область просмотра/редактирования заметки.
+- Поиск по частичному вхождению текста.
+
+### 4. Работа с заметками
+
+- Просмотр в Markdown (с рендерингом).
+- Кнопки "Удалить" (с модальным подтверждением из Mantine).
+- Кнопка "Редактировать" (переключение между просмотром и редактором).
+
+### 5. Хранение данных
+
+- Использован IndexedDB через библиотеку Dexie.
+- CRUD-операции для заметок.
+
+### 6. State Management
+
+- Context API для передачи данных между компонентами.
+
+### 7. PWA
+
+- Приложение преобразовано в Progressive Web App (работает оффлайн).
+- Настроен сервис-воркер и манифест.
