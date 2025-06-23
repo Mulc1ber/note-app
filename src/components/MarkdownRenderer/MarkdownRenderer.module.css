@@ -1,0 +1,26 @@
+.note-content-rendered {
+  padding: 10px 1rem;
+}
+
+.note-content-rendered h1,
+.note-content-rendered h2,
+.note-content-rendered h3 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.note-content-rendered p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.note-content-rendered pre {
+  background-color: var(--text-color-pre);
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.note-content-rendered code {
+  font-family: "Courier New", Courier, monospace;
+}

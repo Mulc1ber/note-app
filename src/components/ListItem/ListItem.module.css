@@ -1,0 +1,11 @@
+.note-list {
+  flex-grow: 1;
+}
+
+.empty-list {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color-light);
+}

@@ -1,0 +1,29 @@
+:root {
+  --bg-color-light: #fff;
+  --bg-color-alt: #f9f9f9;
+  --bg-color-selected: #e8f6ff;
+  --bg-color-hover: #f0f0f0;
+  --bg-color-selected: #e8f6ff;
+
+  --text-color-light: #999;
+  --text-color-pre: #f9f9f9;
+  --text-color-error: red;
+
+  --border-color-main: #ccc;
+  --border-color-focus: #007bff;
+  --border-color-separator: #ececea;
+  --border-color-textarea: #eee;
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}

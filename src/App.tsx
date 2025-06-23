@@ -1,5 +1,5 @@
-import "./App.css";
+import { AppRouter } from "./routers";
 
 export const App = () => {
-  return <></>;
+  return <AppRouter />;
 };

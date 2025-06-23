@@ -1,0 +1,48 @@
+.note-list-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-color-separator);
+  background-color: var(--bg-color-light);
+  margin-bottom: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.note-list-item:hover {
+  background-color: var(--bg-color-hover);
+}
+
+.note-list-item.selected {
+  background-color: var(--bg-color-selected);
+  font-weight: 500;
+}
+
+.note-list-item h4 {
+  margin: 0 0 5px 0;
+  font-size: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-preview-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.note-preview-container span {
+  font-size: 0.8em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.note-preview-container p {
+  margin: 0;
+  font-size: 0.8em;
+  color: var(--text-color-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
