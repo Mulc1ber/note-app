@@ -1,5 +1,7 @@
 # Notes App
 
+[Demo](https://mulc1ber.github.io/note-app/)
+
 ## Задание
 
 Создать упрощеную копию приложения «Заметки» из операционной системы macOS с помощью Vite, React, TS и React Router v6.
