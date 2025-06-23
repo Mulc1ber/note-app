@@ -2,6 +2,8 @@
 
 Упрощенная версия приложения «Заметки» из операционной системы macOS реализованная с помощью Vite, React, TS и React Router v6.
 
+[Demo](https://mulc1ber.github.io/note-app/)
+
 ![preview](./public/preview.PNG)
 
 ## Реализация
