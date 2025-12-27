@@ -6,7 +6,7 @@ export const NotFound: React.FC = () => {
   return (
     <div className={styles["not-found"]}>
       <h1>Страница не найдена</h1>
-      <Link to="/">Вернуться на главную страницу</Link>
+      <Link to="/note-app">Вернуться на главную страницу</Link>
     </div>
   );
 };

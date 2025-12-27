@@ -10,4 +10,5 @@ export default defineConfig({
       "@types": "/src/types",
     },
   },
+  base: "/note-app/",
 });

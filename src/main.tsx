@@ -8,7 +8,7 @@ import "./index.css";
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("/sw.js")
+    .register("/note-app/sw.js")
     .then((reg) => console.log("Service Worker registered", reg))
     .catch((err) => console.log("Service Worker not registered", err));
 }
@@ -16,7 +16,7 @@ if ("serviceWorker" in navigator) {
 createRoot(document.getElementById("root")!).render(
   <MantineProvider forceColorScheme="light">
     <ModalsProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/note-app">
         <App />
       </BrowserRouter>
     </ModalsProvider>

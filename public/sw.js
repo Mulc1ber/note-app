@@ -1,7 +1,13 @@
+const BASE = "/note-app/"; // Добавьте имя репозитория
 const staticCacheName = "static-cache-v1";
 const dynamicCacheName = "dynamic-cache-v1";
 
-const ASSETS = ["/", "/index.html", "/favicon.ico", "/offline.html"];
+const ASSETS = [
+  `${BASE}`,
+  `${BASE}index.html`,
+  `${BASE}favicon.ico`,
+  `${BASE}offline.html`,
+];
 
 self.addEventListener("install", async (event) => {
   const cache = await caches.open(staticCacheName);
@@ -45,7 +51,7 @@ async function networkFirst(request) {
     if (cached) return cached;
 
     if (request.headers.get("accept")?.includes("text/html")) {
-      return await caches.match("/offline.html");
+      return await caches.match(`${BASE}offline.html`);
     }
 
     return new Response(null, { status: 504, statusText: "Gateway Timeout" });
